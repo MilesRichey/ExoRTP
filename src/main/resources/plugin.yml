@@ -1,0 +1,16 @@
+name: ${project.artifactId}
+version: ${project.version}
+author: RaringM
+main: co.raring.exortp.Core
+
+commands:
+  exortp:
+    description: Main command for ExoRTP
+    aliases: [rtp, randomteleport, randomtp]
+    permission: exortp.use
+    permission-message: You do not have permission to use /<command>!
+    usage: Syntax error! Perhaps you meant /<command>?
+permissions:
+  exortp.use:
+
+  exortp.admin:
