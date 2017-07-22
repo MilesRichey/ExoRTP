@@ -12,5 +12,8 @@ commands:
     usage: Syntax error! Perhaps you meant /<command>?
 permissions:
   exortp.use:
-
+    description: Allows basic use of ExoRTP, such as randomly teleporting.
+    default: true
   exortp.admin:
+    description: Allows usage of ExoRTP's admin commands.
+    default: op

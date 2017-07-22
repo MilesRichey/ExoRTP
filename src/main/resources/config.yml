@@ -1,0 +1,8 @@
+# Maximum X that the plugin will go to
+max-x: 25000
+# Maximum Z that the plugin will go to
+max-z: 25000
+# Minimum X that the plugin will go to
+min-x: -25000
+# Minimum Z that the plugin will go to
+min-z: -25000
