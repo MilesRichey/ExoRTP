@@ -2,6 +2,7 @@ package co.raring.exortp.tool;
 
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -20,15 +21,20 @@ public class RandomArea {
     }
 
     /**
-     * Generate a new location, if one can't be found after 3 tries give up.
-     * @param times Amount of times a new location has been tried
+     * Generate a new location
      */
     public void newLocation() {
-        this.randomLocation = new Location
-                (world, randDouble(minX, maxX), 60, randDouble(minZ, maxZ));
+        this.randomLocation = new Location(world, randDouble(minX, maxX), 60, randDouble(minZ, maxZ));
         this.randomLocation.setY(world.getHighestBlockYAt(randomLocation));
+        if(!isSafe(this.randomLocation)) {
+            newLocation();
+        }
     }
-
+    private boolean isSafe(Location loc) {
+        Block block = loc.getBlock();
+        Block below = block.getRelative(0,  -1, 0);
+        return !block.isLiquid() && !below.isLiquid();
+    }
     /**
      * @return Randomly generated location in given world.
      */
@@ -36,12 +42,22 @@ public class RandomArea {
         return this.randomLocation;
     }
 
+    /**
+     * Generates a random double
+     * @param min Minimum
+     * @param max Maximum
+     * @return A random double in the given range.
+     */
     private double randDouble(double min, double max) {
         double randomDouble = min + (max - min) * ThreadLocalRandom.current().nextDouble();
-        // Chance of making random coords negative
-        if(ThreadLocalRandom.current().nextBoolean()) {
-            randomDouble = -randomDouble;
+        // Chance of making random number negative, if min is negative
+        if(min < 0 || max < 0) {
+            if (ThreadLocalRandom.current().nextBoolean()) {
+                randomDouble = -randomDouble;
+            }
         }
         return randomDouble;
+
+
     }
 }

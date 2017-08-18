@@ -5,15 +5,15 @@ main: co.raring.exortp.Core
 
 commands:
   exortp:
-    description: Main command for ExoRTP
+    description: Main command for exortp
     aliases: [rtp, randomteleport, randomtp]
     permission: exortp.use
     permission-message: You do not have permission to use /<command>!
     usage: Syntax error! Perhaps you meant /<command>?
 permissions:
   exortp.use:
-    description: Allows basic use of ExoRTP, such as randomly teleporting.
+    description: Allows basic use of CommandExortp, such as randomly teleporting.
     default: true
   exortp.admin:
-    description: Allows usage of ExoRTP's admin commands.
+    description: Allows usage of CommandExortp's admin commands.
     default: op

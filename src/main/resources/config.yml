@@ -1,3 +1,6 @@
+# Message to display before messages sent by this plugin
+prefix: '&b[&cExo&6RTP&b]&9'
+
 # Maximum X that the plugin will go to
 max-x: 25000
 # Maximum Z that the plugin will go to
